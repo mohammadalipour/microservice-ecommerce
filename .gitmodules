@@ -3,7 +3,7 @@
 	url = git@github.com:mohammadalipour/api-gateway.git
 [submodule "product-service"]
 	path = product-service
-	url = git@github.com:mohammadalipour/prodcut-service.git
+	url = git@github.com:mohammadalipour/product-service.git
 [submodule "user-service"]
 	path = user-service
 	url = git@github.com:mohammadalipour/user-service.git
