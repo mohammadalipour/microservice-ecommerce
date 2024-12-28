@@ -1,0 +1,48 @@
+services:
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - ./product-service:/var/www/html
+    ports:
+      - "9001:9000"
+    networks:
+      - ecommerce-network
+    depends_on:
+      - product-db
+    command: ["php-fpm"]
+
+  product-nginx:
+    image: nginx:latest
+    ports:
+      - "8001:80"
+    volumes:
+      - ./product-service/public:/var/www/html
+      - ./product-service/docker/nginx/default.conf:/etc/nginx/nginx.conf
+    networks:
+      - ecommerce-network
+    depends_on:
+      - product-service
+
+  product-db:
+    image: mysql:8.0
+    container_name: product-service-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: product_service
+      MYSQL_USER: product_user
+      MYSQL_PASSWORD: product_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./product-service/docker/db-data:/var/lib/mysql
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    external: true
+
+volumes:
+  db-data:

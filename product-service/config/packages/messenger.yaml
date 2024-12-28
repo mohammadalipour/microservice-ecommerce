@@ -1,0 +1,22 @@
+framework:
+  messenger:
+    enabled: true
+    default_bus: command_bus  # Set the default bus here
+    buses:
+      command_bus:
+      # You can add any specific configuration for this bus if needed
+      query_bus:
+      # You can add any specific configuration for this bus if needed
+
+    routing:
+      'App\Messenger\Message\SearchMessage': rabbitmq
+
+    transports:
+      rabbitmq:
+        dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+        options:
+        failure_transport: failed
+      failed:
+        dsn: '%env(MESSENGER_FAILED_TRANSPORT_DSN)%'
+        options:
+          queue: failed_search_messages  # Optional: Custom queue for failed messages

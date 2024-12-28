@@ -1,0 +1,28 @@
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./api-gateway:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - ecommerce-network
+    command: ["php-fpm"]
+
+  gateway-nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - ../api-gateway:/var/www/html
+      - ./api-gateway/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - ecommerce-network
+    depends_on:
+      - api-gateway
+
+networks:
+  ecommerce-network:
+    external: true
