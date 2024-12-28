@@ -4,3 +4,6 @@
 [submodule "product-service"]
 	path = product-service
 	url = git@github.com:mohammadalipour/prodcut-service.git
+[submodule "user-service"]
+	path = user-service
+	url = git@github.com:mohammadalipour/user-service.git
