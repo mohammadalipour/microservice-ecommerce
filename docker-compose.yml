@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   rabbitmq:
     image: "rabbitmq:3-management"
@@ -11,6 +13,26 @@ services:
       - RABBITMQ_DEFAULT_PASS=admin
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - ecommerce-network
+    depends_on:
+      - rabbitmq
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "8081:8081"
+    networks:
+      - ecommerce-network
+    depends_on:
+      - rabbitmq
 
 networks:
   ecommerce-network:
