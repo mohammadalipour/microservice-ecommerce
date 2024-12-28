@@ -1,0 +1,6 @@
+[submodule "api-gateway"]
+	path = api-gateway
+	url = git@github.com:mohammadalipour/api-gateway.git
+[submodule "product-service"]
+	path = product-service
+	url = git@github.com:mohammadalipour/prodcut-service.git
