@@ -44,6 +44,16 @@ services:
     networks:
       - ecommerce-network
 
+  shopping-service:
+    build:
+      context: ./shopping-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - rabbitmq
+    networks:
+      - ecommerce-network
+
 networks:
   ecommerce-network:
     driver: bridge
