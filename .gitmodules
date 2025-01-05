@@ -8,5 +8,5 @@
 	path = user-service
 	url = git@github.com:mohammadalipour/user-service.git
 [submodule "shopping-service"]
-	path = user-service
+	path = shopping-service
 	url = git@github.com:mohammadalipour/shopping-service.git
