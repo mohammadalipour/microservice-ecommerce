@@ -54,6 +54,16 @@ services:
     networks:
       - ecommerce-network
 
+  inventory-service:
+    build:
+      context: ./inventory-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - rabbitmq
+    networks:
+      - ecommerce-network
+
 networks:
   ecommerce-network:
     driver: bridge
