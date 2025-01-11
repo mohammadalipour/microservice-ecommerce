@@ -10,3 +10,6 @@
 [submodule "shopping-service"]
 	path = shopping-service
 	url = git@github.com:mohammadalipour/shopping-service.git
+[submodule "inventory-service"]
+	path = inventory-service
+	url = git@github.com:mohammadalipour/inventory-service.git
