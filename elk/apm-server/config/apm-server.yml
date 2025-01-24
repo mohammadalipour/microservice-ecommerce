@@ -1,8 +1,0 @@
-apm-server:
-  host: 0.0.0.0:8200
-  secret_token: YlVQS2U1UUIzazlwNEg4a2JpX3k6RjNJRjdrRXdSb0dXZjhPdGJrV0s4QQ==
-  api_key.enabled: true
-output.elasticsearch:
-  hosts: [ http://elasticsearch:9200 ]
-  username: elastic
-  password: 5MfKtMoA=19pQu=ZoI*c
