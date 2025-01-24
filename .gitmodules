@@ -13,3 +13,6 @@
 [submodule "inventory-service"]
 	path = inventory-service
 	url = git@github.com:mohammadalipour/inventory-service.git
+[submodule "elk-service"]
+	path = elk
+	url = git@github.com:mohammadalipour/elk-service.git
