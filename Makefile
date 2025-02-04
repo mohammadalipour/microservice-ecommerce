@@ -7,7 +7,7 @@ endif
 .PHONY: up
 up:
 	@echo "Starting all services..."
-	docker-compose -f docker-compose.yml -f api-gateway/docker-compose.yml -f product-service/docker-compose.yml -f user-service/docker-compose.yml -f shopping-service/docker-compose.yml -f inventory-service/docker-compose.yml up -d
+	docker-compose -f docker-compose.yml -f api-gateway/docker-compose.yml -f product-service/docker-compose.yml -f user-service/docker-compose.yml -f shopping-service/docker-compose.yml -f inventory-service/docker-compose.yml -f elk-service/docker-compose.yml up -d
 
 # Build all services in detached mode
 .PHONY: up
@@ -19,7 +19,7 @@ build:
 .PHONY: up
 down:
 	@echo "Starting all services..."
-	docker-compose -f docker-compose.yml -f api-gateway/docker-compose.yml -f product-service/docker-compose.yml -f user-service/docker-compose.yml down
+	docker-compose -f docker-compose.yml -f api-gateway/docker-compose.yml -f product-service/docker-compose.yml -f user-service/docker-compose.yml docker-compose -f elk-service/docker-compose.yml down
 
 
 # Start all services in detached mode
@@ -27,3 +27,8 @@ down:
 user-service:
 	@echo "Starting user-service service..."
 	docker-compose -f docker-compose.yml -f user-service/docker-compose.yml up -d
+
+.PHONY: elk-service
+stop-elk:
+	@echo "stop elk-service service..."
+	docker-compose -f elk-service/docker-compose.yml stop
